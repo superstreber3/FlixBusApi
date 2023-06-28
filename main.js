@@ -20,7 +20,7 @@ sql.connect(config, function (err) {
 
     let request = new sql.Request();
 
-    fs.createReadStream('stations.csv')
+    fs.createReadStream('./db/stations.csv')
         .pipe(csv())
         .on('data', (row) => {
             let insertQuery = `IF NOT EXISTS (SELECT * FROM Station WHERE name='${row.name}') INSERT INTO Station(name, longitude, latitude, address, country, zip, city) VALUES('${row.name}', ${row.longitude}, ${row.latitude}, '${row.address}', '${row.country}', '${row.zip}', '${row.city}')`;
