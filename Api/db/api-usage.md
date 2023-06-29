@@ -5,7 +5,7 @@
 ### 1. Create a new tour
 
 - **Method:** `POST`
-- **Endpoint:** `/tours`
+- **Endpoint:** `/createTours`
 - **Body:**
 
     ```json
@@ -49,7 +49,7 @@
 ### 4. Create a new station
 
 - **Method:** `POST`
-- **Endpoint:** `/stations`
+- **Endpoint:** `/createStations`
 - **Body:**
 
     ```json

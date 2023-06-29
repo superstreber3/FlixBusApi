@@ -21,7 +21,7 @@
 		<mat-form-field>
 			<mat-label>Start Destination</mat-label>
 			<mat-select formControlName="startDestination" required>
-				<mat-option *ngFor="let station of stations" [value]="station.id"> {{ station.id }} | {{ station.name }} </mat-option>
+				<mat-option *ngFor="let station of stations" [value]="station.id">{{ station.name }} </mat-option>
 			</mat-select>
 		</mat-form-field>
 	</p>

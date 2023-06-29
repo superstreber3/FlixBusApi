@@ -9,8 +9,8 @@ app.use(cors());
 // Connection string parameters.
 var config = {
   user: "Flixbus",
-  password: "Flixbus",
-  server: "DESKTOP-UHENNU8",
+  password: "Flixbus123",
+  server: "localhost",
   database: "Flixbus",
   options: {
     encrypt: false,
