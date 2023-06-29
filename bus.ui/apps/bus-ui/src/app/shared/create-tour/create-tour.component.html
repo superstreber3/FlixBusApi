@@ -1,0 +1,39 @@
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+	<p>
+		<mat-form-field>
+			<mat-label>First Name</mat-label>
+			<input matInput formControlName="firstName" required />
+		</mat-form-field>
+	</p>
+	<p>
+		<mat-form-field>
+			<mat-label>Last Name</mat-label>
+			<input matInput formControlName="lastName" required />
+		</mat-form-field>
+	</p>
+	<p>
+		<mat-form-field>
+			<mat-label>Email</mat-label>
+			<input matInput formControlName="email" required email />
+		</mat-form-field>
+	</p>
+	<p>
+		<mat-form-field>
+			<mat-label>Start Destination</mat-label>
+			<mat-select formControlName="startDestination" required>
+				<mat-option *ngFor="let station of stations" [value]="station.id"> {{ station.id }} | {{ station.name }} </mat-option>
+			</mat-select>
+		</mat-form-field>
+	</p>
+	<p>
+		<mat-form-field>
+			<mat-label>End Destination</mat-label>
+			<mat-select formControlName="endDestination" required>
+				<mat-option *ngFor="let station of stations" [value]="station.id">
+					{{ station.name }}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+	</p>
+	<button mat-raised-button color="primary" type="submit">Submit</button>
+</form>

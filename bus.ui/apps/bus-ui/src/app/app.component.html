@@ -1,2 +1,110 @@
-<router-outlet></router-outlet>
-<p *ngFor="let bus of buses">{{ bus.name }}</p>
+<!-- <router-outlet></router-outlet> -->
+<div class="container my-3">
+	<div class="row mb-3">
+		<div class="col2">
+			<button mat-stroked-button (click)="addStation()">Create Station</button>
+		</div>
+	</div>
+	<div class="row mb-5">
+		<table mat-table [dataSource]="stations" class="mat-elevation-z8">
+			<!-- Name Column -->
+			<ng-container matColumnDef="name">
+				<th mat-header-cell *matHeaderCellDef>Name</th>
+				<td mat-cell *matCellDef="let station">{{ station.name }}</td>
+			</ng-container>
+
+			<!-- Longitude Column -->
+			<ng-container matColumnDef="longitude">
+				<th mat-header-cell *matHeaderCellDef>Longitude</th>
+				<td mat-cell *matCellDef="let station">{{ station.longitude }}</td>
+			</ng-container>
+
+			<!-- Latitude Column -->
+			<ng-container matColumnDef="latitude">
+				<th mat-header-cell *matHeaderCellDef>Latitude</th>
+				<td mat-cell *matCellDef="let station">{{ station.latitude }}</td>
+			</ng-container>
+
+			<!-- Address Column -->
+			<ng-container matColumnDef="address">
+				<th mat-header-cell *matHeaderCellDef>Address</th>
+				<td mat-cell *matCellDef="let station">{{ station.address }}</td>
+			</ng-container>
+
+			<!-- Country Column -->
+			<ng-container matColumnDef="country">
+				<th mat-header-cell *matHeaderCellDef>Country</th>
+				<td mat-cell *matCellDef="let station">{{ station.country }}</td>
+			</ng-container>
+
+			<!-- ZIP Column -->
+			<ng-container matColumnDef="zip">
+				<th mat-header-cell *matHeaderCellDef>ZIP</th>
+				<td mat-cell *matCellDef="let station">{{ station.zip }}</td>
+			</ng-container>
+
+			<!-- City Column -->
+			<ng-container matColumnDef="city">
+				<th mat-header-cell *matHeaderCellDef>City</th>
+				<td mat-cell *matCellDef="let station">{{ station.city }}</td>
+			</ng-container>
+
+			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+		</table>
+	</div>
+
+	<div class="row mb-3">
+		<div class="col2">
+			<button mat-stroked-button (click)="addTour()">Create Station</button>
+		</div>
+	</div>
+	<div class="row mb-3">
+		<table mat-table [dataSource]="dataSourceTour" class="mat-elevation-z8">
+			<ng-container matColumnDef="customerFirstName">
+				<th mat-header-cell *matHeaderCellDef>First Name</th>
+				<td mat-cell *matCellDef="let element">{{ element.customerFirstName }}</td>
+			</ng-container>
+
+			<ng-container matColumnDef="customerLastName">
+				<th mat-header-cell *matHeaderCellDef>Last Name</th>
+				<td mat-cell *matCellDef="let element">{{ element.customerLastName }}</td>
+			</ng-container>
+
+			<ng-container matColumnDef="customerEmail">
+				<th mat-header-cell *matHeaderCellDef>Email</th>
+				<td mat-cell *matCellDef="let element">{{ element.customerEmail }}</td>
+			</ng-container>
+
+			<ng-container matColumnDef="startStation">
+				<th mat-header-cell *matHeaderCellDef>Start Destination</th>
+				<td mat-cell *matCellDef="let element">{{ element.startStation }}</td>
+			</ng-container>
+
+			<ng-container matColumnDef="endStation">
+				<th mat-header-cell *matHeaderCellDef>End Destination</th>
+				<td mat-cell *matCellDef="let element">{{ element.endStation }}</td>
+			</ng-container>
+
+			<tr mat-header-row *matHeaderRowDef="displayedColumnsTour"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedColumnsTour"></tr>
+		</table>
+	</div>
+
+	<div class="row mb-3">
+		<div class="col-12">
+			<mat-form-field>
+				<input matInput placeholder="Search by Email" [(ngModel)]="searchEmail" (ngModelChange)="filterByEmail()" />
+			</mat-form-field>
+		</div>
+		<div class="col-4" *ngFor="let result of searchResults">
+			<mat-card>
+				<mat-card-header>
+					<mat-card-title>{{ result.firstName }} {{ result.lastName }}</mat-card-title>
+					<mat-card-subtitle>{{ result.email }}</mat-card-subtitle>
+				</mat-card-header>
+				<mat-card-content> {{ result.startStation }} - {{ result.endStation }} </mat-card-content>
+			</mat-card>
+		</div>
+	</div>
+</div>

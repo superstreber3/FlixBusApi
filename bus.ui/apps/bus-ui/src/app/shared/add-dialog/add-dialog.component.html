@@ -1,0 +1,6 @@
+<h2 mat-dialog-title>{{ data.title }}</h2>
+<mat-divider class="mb-3"></mat-divider>
+<mat-dialog-content class="mat-typography">
+	<bus-ui-create-tour *ngIf="data.type === 'create-tour'" [stations]="data.stations" (closeDialog)="close($event)"></bus-ui-create-tour>
+	<bus-ui-create-station *ngIf="data.type === 'create-station'"(closeDialog)="close($event)"></bus-ui-create-station>
+</mat-dialog-content>
